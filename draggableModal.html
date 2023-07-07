@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal FInal</title>
+</head>
+<style>
+    body {
+        background-image: url('https://wallpapers.com/images/featured/3g1vwg2k7527nrwe.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        color: aliceblue;
+    }
+
+    button {
+        cursor: pointer;
+        height: 30px;
+        transition: 0.9s;
+        opacity: 0.6;
+        /* font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: grey;
+        color: white; */
+    }
+
+    button:hover {
+        /* content: ">>"; */
+        background-color: rgb(205, 82, 102);
+        opacity: 1;
+        /* font-weight: bold; */
+    }
+
+    .title {
+        text-shadow: 0px 0px 2px white;
+    }
+
+    .modalEnvolope {
+        display: none;
+        /* overflow: auto; */
+        position: fixed;
+        background-color: rgba(58, 58, 59, 0.6);
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        padding-top: 170px;
+        -webkit-animation-name: fadeIn;
+        -webkit-animation-duration: 0.3s;
+        animation-name: fadeIn;
+        animation-duration: 0.3s;
+        transition: 0.4s;
+    }
+
+    .modalContainer {
+        position: fixed;
+        margin: auto;
+        width: 60%;
+        height: 50%;
+        background-color: rgb(20, 11, 38);
+        background-color: rgba(178, 196, 197, 0.8);
+        padding: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        border: 1.5px solid rgb(25, 10, 10, 0.9);
+        border-radius: 4px;
+        box-shadow: 2px 2px 20px black;
+        transition: 0.4s;
+        left: 20%;
+        top: 25%;
+        overflow-y: auto;
+    }
+
+    .modalContainer:hover {
+        background-color: rgb(233, 241, 248, 0.95);
+    }
+
+    .close {
+        float: right;
+        border: 1.5px solid black;
+        border-radius: 3.2px;
+        box-shadow: 1px 1px 5px black, 3px 3px 2px grey;
+        background-color: rgb(165, 42, 42, 0.8);
+        font-weight: bold;
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        color: rgb(255, 255, 255, 0.7);
+        padding: 2px;
+        padding-left: 4px;
+        padding-right: 4px;
+        cursor: pointer;
+        text-shadow: 0 0 3px #abdad6, 0 0 5px #d8d8e6;
+        user-select: none;
+        transition: 0.3s;
+    }
+
+    .close:hover {
+        background-color: brown;
+        text-shadow: 0 0 0;
+    }
+
+    .obj {
+        font-size: 20px;
+        width: 100%;
+        max-width: 100%;
+        height: 500px;
+        max-height: 500%;
+        overflow-block: hidden;
+    }
+
+    @-webkit-keyframes slideIn {
+        from {
+            bottom: -300px;
+            opacity: 0
+        }
+
+        to {
+            bottom: 0;
+            opacity: 1
+        }
+    }
+
+    @keyframes slideIn {
+        from {
+            bottom: -300px;
+            opacity: 0
+        }
+
+        to {
+            bottom: 0;
+            opacity: 1
+        }
+    }
+
+    @-webkit-keyframes fadeIn {
+        from {
+            opacity: 0
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0
+        }
+
+        to {
+            opacity: 1
+        }
+    }
+
+    @-webkit-keyframes fadeOut {
+        from {
+            opacity: 1
+        }
+
+        to {
+            opacity: 0
+        }
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1
+        }
+
+        to {
+            opacity: 0
+        }
+    }
+</style>
+
+<body>
+    <h1 class="title">Modal</h1>
+    <!-- {% if name %}
+    <h1>hello {{name}}</h1>
+    {% else %}
+    <h1>hello world</h1> -->
+    <button id="myButt">open modal</button>
+    <p style="text-shadow: 0px 0px 1px wheat; letter-spacing: 0.15px;">
+        Generating random paragraphs can be an excellent way for writers to get their creative flow going at the
+        beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This
+        forces the writer to use creativity to complete one of three common writing challenges. The writer can use the
+        paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph
+        somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph
+        in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to
+        incorporate the paragraph into their writing.
+    </p>
+    <div id="modEnvo" class="modalEnvolope">
+        <div id="myModal" class="modalContainer" offset>
+            <div id="myClose" class="close">X</div>
+            <div
+                style="user-select: none; padding: 40px; align-content: center; color: black; text-shadow: 0px 0px 0.5px rgba(30, 28, 22, 0.7);">
+                hello world !!! <br>
+                <!-- <object class="obj" data="para.html"></object> -->
+            </div>
+        </div>
+    </div>
+    <p>
+        Generating random paragraphs can be an excellent way for writers to get their creative flow going at the
+        beginning of the day. The writer has no idea what topic the random paragraph will be about when it appears. This
+        forces the writer to use creativity to complete one of three common writing challenges. The writer can use the
+        paragraph as the first one of a short story and build upon it. A second option is to use the random paragraph
+        somewhere in a short story they create. The third option is to have the random paragraph be the ending paragraph
+        in a short story. No matter which of these challenges is undertaken, the writer is forced to use creativity to
+        incorporate the paragraph into their writing.
+    </p>
+</body>
+<script>
+    let name = "antony";
+    let button = document.getElementById("myButt");
+    let modal = document.getElementById("modEnvo");
+    let modalMain = document.getElementById("myModal");
+    let close = document.getElementById("myClose");
+
+    let modMemClose = true;
+
+    close.onclick = function () {
+        fadeOutAndCloseModal();
+    };
+
+    button.onclick = function () {
+        modal.style.animation = null;
+        modal.style.animationDuration = null;
+        modal.style.animationName = null;
+        modal.style.display = "block";
+    }
+
+    window.onclick = function (event) {
+
+        if (modMemClose && event.target == modal) {
+
+            modalMain.style.top = null;
+            modalMain.style.left = null;
+
+            fadeOutAndCloseModal();
+        }
+        else {
+            modMemClose = true;
+        }
+
+    }
+
+    modalMain.onmouseover = () => { modalMain.style.transition = "0.5s"; }
+
+    modalMain.onmouseout = () => { modalMain.style.transition = "0.5s"; }
+
+    function fadeOutAndCloseModal() {
+
+        modal.style.animation = "linear forwards";
+        modal.style.animationDuration = "0.2s";
+        modal.style.animationName = "fadeOut"
+
+        setTimeout(() => {
+            modal.style.display = "none";
+        }, 220)
+    }
+
+    var pos1 = 0; var pos2 = 0; var pos3 = 0; var pos4 = 0;
+
+    modalMain.onmousedown = (e) => {
+
+        modalMain.style.transition = "0s";
+        modalMain.style.cursor = "grabbing";
+
+        e = e || window.event;
+        e.preventDefault();
+
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+    }
+
+    function elementDrag(e) {
+
+        modalMain.style.transition = "0s";
+
+        e = e || window.event;
+        e.preventDefault();
+
+        // calculate the new cursor position:
+        pos1 = (e.clientX - pos3) / 1;
+        pos2 = (e.clientY - pos4) / 1;
+
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+
+        // set the element's new position:
+        modalMain.style.top = (modalMain.offsetTop + pos2) + "px";
+        modalMain.style.left = (modalMain.offsetLeft + pos1) + "px";
+
+        // to prevent the modal from dragging off the visible screnn
+        if (modalMain.style.top < "0px") modalMain.style.top = "0px";
+        if (modalMain.style.left < "0px") modalMain.style.left = "0px";
+
+        let screenWidth = window.innerWidth;
+        let modalWidth = modalMain.offsetWidth;
+        let modalOffset = modalMain.offsetLeft;
+        let modalLeftLimit = modalWidth + modalOffset;
+
+        if (modalLeftLimit >= screenWidth) modalMain.style.left = screenWidth - modalWidth + "px";
+    }
+
+    function closeDragElement() {
+        console.log("MOUSE UP")
+        /* stop moving when mouse button is released:*/
+        modMemClose = false;
+        modalMain.style.cursor = null;
+        document.onmouseup = null;
+        modalMain.onmousemove = null;
+        document.onmousemove = null;
+    }
+
+</script>
+
+</html>
