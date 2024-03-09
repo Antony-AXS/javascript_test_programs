@@ -13,8 +13,7 @@ async function convert_data() {
         let columns;
 
         if (err) {
-            console.log("FILE_READ_ERROR---------------------->>>>>", err);
-            return err;
+            throw new Error(err)
         }
 
         csv = csv.toString('utf-8').replace(/"{2,4}/g, '"');
